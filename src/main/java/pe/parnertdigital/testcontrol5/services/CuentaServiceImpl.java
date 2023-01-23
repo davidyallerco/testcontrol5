@@ -2,6 +2,7 @@ package pe.parnertdigital.testcontrol5.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pe.parnertdigital.testcontrol5.models.Banco;
 import pe.parnertdigital.testcontrol5.models.Cuenta;
 import pe.parnertdigital.testcontrol5.repositories.BancoRepository;
@@ -25,17 +26,20 @@ public class CuentaServiceImpl implements CuentaService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Cuenta buscarPorId(Long id) {
         return cuentaRespository.findById(id).orElseThrow(null);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public int revisarTotalTransferencias(Long bancoId) {
         Banco banco = bancoRepository.findById(bancoId).orElseThrow(null);
         return banco.getTotalTransferencias();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public BigDecimal revisarSaldo(Long cuentaId) {
         Cuenta cuenta = cuentaRespository.findById(cuentaId).orElseThrow(null);
         return cuenta.getSaldo();
@@ -44,6 +48,7 @@ public class CuentaServiceImpl implements CuentaService{
 
 
     @Override
+    @Transactional
     public void tranferir(Long numCuentaOrigen, Long numCuentaDestino, BigDecimal monto, Long bancoId) {
 
         Cuenta cuentaOrigen = cuentaRespository.findById(numCuentaOrigen).orElseThrow(null);

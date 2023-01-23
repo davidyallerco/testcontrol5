@@ -58,7 +58,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>test</scope>
+<!--			<scope>test</scope> al no haber un scope queremos que el alcance sea para mas que solo para test-->
 
 		</dependency>
 
