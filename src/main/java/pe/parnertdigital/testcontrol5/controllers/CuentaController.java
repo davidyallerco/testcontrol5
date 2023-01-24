@@ -45,7 +45,7 @@ public class CuentaController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Cuenta> listar(){
-        return null;
+        return cuentaService.buscarTodos();
     }
 
     @PostMapping
