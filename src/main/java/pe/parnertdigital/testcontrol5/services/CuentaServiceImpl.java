@@ -10,6 +10,7 @@ import pe.parnertdigital.testcontrol5.repositories.CuentaRespository;
 
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class CuentaServiceImpl implements CuentaService{
@@ -66,6 +67,16 @@ public class CuentaServiceImpl implements CuentaService{
         banco.setTotalTransferencias(++totalTransferencias);
         bancoRepository.save(banco);
 
+    }
+
+    @Override
+    public List<Cuenta> buscarTodos() {
+        return null;
+    }
+
+    @Override
+    public Cuenta guardar(Cuenta cuenta) {
+        return null;
     }
 
 }

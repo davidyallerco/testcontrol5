@@ -12,6 +12,7 @@ import pe.parnertdigital.testcontrol5.services.CuentaService;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -39,4 +40,18 @@ public class CuentaController {
         response.put("transaccion", dto);
         return ResponseEntity.ok(response);
     }
+
+    //para los dos metodos creados
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<Cuenta> listar(){
+        return null;
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cuenta guardar(@RequestBody Cuenta cuenta){
+        return null;
+    }
+
 }
