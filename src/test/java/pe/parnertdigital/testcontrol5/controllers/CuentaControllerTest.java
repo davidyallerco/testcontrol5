@@ -13,6 +13,7 @@ import pe.parnertdigital.testcontrol5.services.CuentaService;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static  pe.parnertdigital.testcontrol5.Datos.*;
@@ -29,14 +30,17 @@ class CuentaControllerTest {
 
     @Test
     void testDetalle() throws Exception {
+        //Given
 //        when(cuentaService.buscarPorId(1l)).thenReturn(Datos.crearCuenta001().orElseThrow(NoSuchElementException::new));
         when(cuentaService.buscarPorId(1l)).thenReturn(crearCuenta001().orElseThrow(NoSuchElementException::new));//esta de forma estatica, es lo mismo de arriba
         //When
 //        mvc.perform(MockMvcRequestBuilders.get("/api/cuentas/1").contentType(MediaType.APPLICATION_JSON))
         mvc.perform(get("/api/cuentas/1").contentType(MediaType.APPLICATION_JSON)) //esta de forma estatica, es lo mismo de arriba
+        //Then
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.persona").value("David"))
                 .andExpect(jsonPath("$.saldo").value("1000"));
+        verify(cuentaService).buscarPorId(1L);
     }
 }
