@@ -2,12 +2,14 @@ package pe.parnertdigital.testcontrol5;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
+@EnableWebMvc
 public class SpringFoxConfig {
     @Bean
     public Docket api(){
@@ -17,3 +19,8 @@ public class SpringFoxConfig {
                 .paths(PathSelectors.ant("/api/cuentas/*")).build();
     }//...crea la documentacion de forma automatica
 }
+/*
+http://localhost:8080/v2/api-docs
+http://localhost:8080/swagger-ui/index.html
+
+ */
