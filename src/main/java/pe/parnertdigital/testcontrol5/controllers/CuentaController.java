@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.Objects;
 
 
-@Controller
+@RestController
 @RequestMapping("/api/cuentas")
 public class CuentaController {
 

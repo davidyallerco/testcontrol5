@@ -59,7 +59,11 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 <!--			<scope>test</scope> al no haber un scope queremos que el alcance sea para mas que solo para test-->
-
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
 		</dependency>
 
 
