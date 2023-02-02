@@ -71,7 +71,7 @@ public class CuentaServiceImpl implements CuentaService{
 
     @Override
     public List<Cuenta> buscarTodos() {
-        return null;
+        return cuentaRespository.findAll();
     }
 
     @Override
