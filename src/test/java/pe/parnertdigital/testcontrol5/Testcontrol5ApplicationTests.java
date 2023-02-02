@@ -144,6 +144,25 @@ class Testcontrol5ApplicationTests {
 
 		verify(cuentaRespository).findAll();
 	}
+
+	@Test
+	void testSave() {
+		Cuenta cuentaPepe = new Cuenta(null, "Pepe", new BigDecimal("3000"));
+		when(cuentaRespository.save(any())).then(invocation -> {
+			Cuenta c = invocation.getArgument(0);
+			c.setId(3L);
+			return c;
+		});
+
+		Cuenta cuenta = service.guardar(cuentaPepe);
+
+		assertEquals("Pepe", cuenta.getPersona());
+		assertEquals(3, cuenta.getId());
+		assertEquals("3000", cuenta.getSaldo().toPlainString());
+
+		verify(cuentaRespository).save(any());
+
+	}
 }
 
 

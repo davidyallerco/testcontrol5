@@ -70,13 +70,15 @@ public class CuentaServiceImpl implements CuentaService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Cuenta> buscarTodos() {
         return cuentaRespository.findAll();
     }
 
     @Override
+    @Transactional
     public Cuenta guardar(Cuenta cuenta) {
-        return null;
+        return cuentaRespository.save(cuenta);
     }
 
 }
